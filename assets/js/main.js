@@ -15,4 +15,3 @@ window.onload = () => {
 
     document.oncontextmenu = () => false;
 }
-
