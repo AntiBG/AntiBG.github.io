@@ -26,12 +26,46 @@
 <nav class="wrapper">
 	<div class="title fadetitle">
 		<a href="https://steamcommunity.com/id/turciq/">Anti</a>
-<nav class="overlay">
-	<div class="center">
-press anywhere to enter
+< div class= "overlay" >
+ < div class= "center" >press anywhere to enter </div>
 </div>
-	<div class="title fadetitle">
-		<a href="https://steamcommunity.com/id/turciq/">Anti</a>		
+    <script>
+        var rythm;
+var initialized = false;
+
+var init_rythm = () => {
+rythm = new Rythm();
+rythm.addRythm('logo-bass', 'pulse', 0, 7);
+rythm.addRythm('logo-neon', 'textNeon', 80, 150, {
+to:[77, 0, 60],
+                from:[138, 0, 108]
+            });
+
+rythm.addRythm('logo-blur', 'blur', 80, 150, {
+min: 0,
+                max: 4
+            });
+        };
+bgm.volume = 0.2;
+var play = () => {
+    if (initialized)
+        return;
+    bgAudio.play().then(() => {
+        init_rythm();
+        rythm.connectExternalAudioElement(bgm);
+        rythm.start();
+                $(".overlay").addClass("hidden");
+        initialized = true;
+    });
+};
+play();
+
+window.onclick = () => {
+    play();
+}
+
+  
+    </ script >
 <div class="menu fadelinks">
 	<div class="button grow hvr-overline-from-center"><a class="fab fa-youtube" href="https://www.youtube.com/channel/UCQ98oM_HULuumtsE8aLaDNw"></a></div>
 	<div class="button grow hvr-overline-from-center"><a class="fab fa-soundcloud" href="https://soundcloud.com/antibg"></a></div>
